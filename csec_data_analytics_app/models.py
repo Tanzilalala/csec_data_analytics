@@ -1,4 +1,4 @@
-from mongoengine import Document, StringField, EmailField, EmbeddedDocument, IntField, EmbeddedDocumentField
+from mongoengine import Document, StringField, FloatField, EmailField, EmbeddedDocument, IntField, EmbeddedDocumentField
 
 
 class UserAddress(EmbeddedDocument):
@@ -20,4 +20,12 @@ class User(Document):
 class Vulnerability(Document):
     cve_id = StringField(required=True, null=False)
     attack_vector_type = StringField(required=True, null=False)
+
+
+class Book(Document):
+    title = StringField(required=True)
+    author = StringField(required=True)
+    genre = StringField(required=True)
+    publication_year = IntField(required=True)
+    price = FloatField(required=True)
 
