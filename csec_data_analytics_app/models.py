@@ -1,5 +1,5 @@
-from mongoengine import Document, StringField, FloatField, EmailField, EmbeddedDocument, IntField, EmbeddedDocumentField
-
+from mongoengine import EmailField, EmbeddedDocument, IntField, EmbeddedDocumentField
+from mongoengine import Document, StringField, ListField, FloatField, DateTimeField
 
 class UserAddress(EmbeddedDocument):
     street = StringField(required=True, null=False)
@@ -18,8 +18,18 @@ class User(Document):
 
 
 class Vulnerability(Document):
-    cve_id = StringField(required=True, null=False)
-    attack_vector_type = StringField(required=True, null=False)
+    cve_id = StringField()
+    description = StringField()
+    cpe_configurations = ListField()
+    cwes = ListField(StringField())
+    cisa_exploitability_metric = FloatField()
+    cvss = FloatField()
+    published_date = DateTimeField()
+    last_modified_date = DateTimeField()
+
+    meta = {
+        'collection': 'vulnerabilities'  # Optionally specify the collection name
+    }
 
 
 class Book(Document):
