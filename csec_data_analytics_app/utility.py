@@ -5,11 +5,11 @@ class NvdApiUtility:
     BASE_URL = "https://services.nvd.nist.gov/rest/json/cves/2.0"
 
     @staticmethod
-    def extract_cve_data(api_key):
+    def extract_cve_data(api_key, start_index):
         base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0"
 
         params = {
-            "startIndex": 0,  # Start from the beginning
+            "startIndex": start_index,  # Start from the beginning
             "resultsPerPage": 1000,  # Get only one result for testing
         }
 
