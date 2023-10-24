@@ -1,5 +1,5 @@
 from mongoengine import EmailField, EmbeddedDocument, IntField, EmbeddedDocumentField
-from mongoengine import Document, StringField, ListField, FloatField, DateTimeField
+from mongoengine import Document, StringField, ListField
 
 class UserAddress(EmbeddedDocument):
     street = StringField(required=True, null=False)
@@ -15,6 +15,23 @@ class User(Document):
     last_name = StringField(required=True, null=False)
     email = EmailField(required=True, null=False)
     address = EmbeddedDocumentField(UserAddress, required=True)
+
+
+# models.py
+
+from mongoengine import Document, StringField, FloatField, DateTimeField
+
+from mongoengine import Document, StringField, ListField, FloatField, DateTimeField
+
+class CisaVulnerability(Document):
+    cve_id = StringField()
+    description = StringField()
+    cpe_configurations = ListField(StringField())
+    cwes = ListField(StringField())
+    cisa_exploitability_metric = StringField()
+    cvss = FloatField()
+    published_date = DateTimeField()
+    last_modified_date = DateTimeField()
 
 
 class Vulnerability(Document):
