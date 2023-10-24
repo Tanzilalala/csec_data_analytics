@@ -1,16 +1,24 @@
+from datetime import datetime, timedelta
 import requests
-from datetime import datetime
-
 class NvdApiUtility:
-    BASE_URL = "https://services.nvd.nist.gov/rest/json/cves/2.0"
+    BASE_URL = "https://services.nvd.nist.gov/rest/json/cves/1.0"
 
     @staticmethod
     def extract_cve_data(api_key, start_index):
-        base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0"
+        base_url = "https://services.nvd.nist.gov/rest/json/cves/1.0"
+
+        # Set the start date to January 1, 2021
+        # start_date = "2021-01-01"
+
+        # Calculate the end date, 120 days later
+        # start_datetime = datetime.strptime(start_date, "%Y-%m-%d")
+        # end_datetime = start_datetime + timedelta(days=120)
+        # end_date = end_datetime.strftime("%Y-%m-%d")
 
         params = {
-            "startIndex": start_index,  # Start from the beginning
-            "resultsPerPage": 1000,  # Get only one result for testing
+            # "pubStartDate": start_date,
+            # "pubEndDate": end_date,
+            "resultsPerPage": 1000  # Get only one result for testing
         }
 
         headers = {
